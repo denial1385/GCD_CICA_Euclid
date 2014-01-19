@@ -9,8 +9,6 @@
 
 import random
 
-
-
 def main():
 
  #CIC algorithm global variables:
@@ -22,6 +20,10 @@ def main():
  #euclids algorithm global variables:
  euclidsrandomNumbersArray1 = []
  euclidsrandomNumbersArray2 = []
+
+ maxIterations = 0
+ minIterations = 0
+ iterationSum = 0
 
  for x in range (0,100):
     print ("\nInstance Number: ", x)
@@ -114,8 +116,8 @@ def main():
 
     #print ("Average of iterations : ", iterationSum/100)
 
-    #euclidsrandomNumbersArray1 = randomNumbersArray1
-    #euclidsrandomNumbersArray2 = randomNumbersArray2
+    euclidsrandomNumbersArray1 = randomNumbersArray1
+    euclidsrandomNumbersArray2 = randomNumbersArray2
 
  print ("Iterations: ", iterationsArray)
  print ("Random Number 1: ", randomNumbersArray1)
@@ -159,12 +161,25 @@ def main():
  #
  #*************************************************
 
- print ("\n\n ****** Now Implementing: Euclid's Algorithm.... \n\n")
+ temp = 0
+ gotEuclidsGCD = False
+ euclidsGCD = 0
+ euclidsCounter = 0
+ euclidsCounterArray = []
+ euclidsCommonDivisorArray = []
+ euclidsRandomNumbersArray1 = []
+ euclidsRandomNumbersArray2 = []
+
+ #a = 1071
+ #b = 462
+ #GCD of test = 21
+
+ print ("\n ***********************************************\n ****** Now Implementing: Euclid's Algorithm.... \n\n")
  print (euclidsrandomNumbersArray1)
  print (euclidsrandomNumbersArray2, "\n")
 
- print ("rNA1Length: ", rNA1Length)
- print ("rNA1Length: ", rNA1Length)
+ #print ("rNA1Length: ", rNA1Length)
+ #print ("rNA1Length: ", rNA1Length)
 
  euclidsRNA1Length = len(euclidsrandomNumbersArray1)
  euclidsRNA2Length = len(euclidsrandomNumbersArray2)
@@ -172,31 +187,23 @@ def main():
  print ("euclidsRNA1Length: ", euclidsRNA1Length)
  print ("euclidsRNA2Length: ", euclidsRNA2Length)
 
- #if euclidsRNA1Length == euclidsRNA2Length:
-     #euclidsRange = euclidsRNA2Length
+ if euclidsRNA1Length == euclidsRNA2Length:
+     euclidsRange = euclidsRNA2Length
 
- #a = 1071
- #b = 462
- #GCD of test = 21
 
- temp = 0
- gotEuclidsGCD = False
- euclidsGCD = 0
- euclidsCounter = 0
+ while len(euclidsrandomNumbersArray1) != 0:
 
- while len(randomNumbersArray1) != 0:
-
-     euclidsCounter += 1
+     euclidsCounter = 0
 
      print ("\nInstance Number: ", len(euclidsrandomNumbersArray1))
 
      #compare coprimes, make larger a and smaller b
 
-     euclidsCandidate1 = randomNumbersArray1.pop()
-     euclidsCandidate2 = randomNumbersArray2.pop()
+     euclidsCandidate1 = randomNumbersArray1.pop(0)
+     euclidsCandidate2 = randomNumbersArray2.pop(0)
 
-     print ("\neuclidsCandidate1", euclidsCandidate1)
-     print ("euclidsCandidate2", euclidsCandidate2)
+     print ("\neuclidsCandidate1: ", euclidsCandidate1)
+     print ("euclidsCandidate2: ", euclidsCandidate2)
 
      if euclidsCandidate1 > euclidsCandidate2:
          a = euclidsCandidate1
@@ -209,14 +216,16 @@ def main():
 
      print ( "First go: a - b =", temp)
 
-     while gotEuclidsGCD == False:
+     while b != temp:
 
-         #euclidsCounter += 1
+         euclidsCounter += 1
+
+         #print ("\nHi!\n")
 
          if temp > b:
             temp = temp - b
             #print ("Temp1: ", temp)
-            #print ("B1:",b,"\n")
+            #print ("B1:",b,"/n")
 
          elif temp < b:
                 newA = b
@@ -228,15 +237,120 @@ def main():
                 #print ("b2: ",b,"\n")
 
          else:
-                b = euclidsGCD
+                euclidsGCD = b
+                print ("True -> euclidsGCD:", euclidsGCD, " b:", b)
                 gotEuclidsGCD = True
 
-         #print ("\n\nB3: ",b)
-     print ("eGCD3:", b)
 
 
-     print ("Iterations: ", euclidsCounter)
+     euclidsGCD = b
+     print ("True -> euclidsGCD:", euclidsGCD, " b:", b)
 
+     print ("Iterations for this instance: ", euclidsCounter)
+
+
+     #***********************************************
+
+
+
+ #print ("The GCD for ",euclidsCandidate1, " and ",euclidsCandidate2, " is ", euclidsGCD)
+    #print ("Total iterations are ", )
+        #print ("Exiting Common Divisor Array : ", commonDivisorArray)
+
+     euclidsCounterArray.append(euclidsCounter)
+     euclidsRandomNumbersArray1.append(euclidsCandidate1)
+     euclidsRandomNumbersArray2.append(euclidsCandidate2)
+
+     euclidsCommonDivisorArray.append(euclidsGCD)
+
+
+ print ("\n\nEuclids Counter Array: ", euclidsCounterArray)
+
+ print ("EuclidsRandomNumbersArray1: ", euclidsRandomNumbersArray1)
+ print ("EuclidsRandomNumbersArray2: ", euclidsRandomNumbersArray2)
+
+    #rNA1Length = len(randomNumbersArray1)
+    #rNA2Length = len(randomNumbersArray2)
+
+    #print ("rNA1Length: ", rNA1Length)
+    #print ("rNA1Length: ", rNA1Length)
+
+    #euclidsrandomNumbersArray1 = randomNumbersArray1
+    #euclidsrandomNumbersArray2 = randomNumbersArray2
+
+ print ("\n\nCICA's GCD Array: ", commonDivisorArray)
+ print ("\nEuclid's GCD Array: ", euclidsCommonDivisorArray)
+
+
+ #******************************************************************************
+
+
+ euclidsPositionOfMaxIter = euclidsCounterArray.index(max(euclidsCounterArray,key=int))
+ print ("\n Position in Max Iterations Array: ", euclidsPositionOfMaxIter)
+
+ euclidsPositionOfMinIter = euclidsCounterArray.index(min(euclidsCounterArray,key=int))
+ print ("\n Position in Min Iterations Array: ", euclidsPositionOfMinIter)
+
+ euclidsMaxNumberInRandArr1 = euclidsRandomNumbersArray1.pop(euclidsPositionOfMaxIter)
+ euclidsMaxNumberInRandArr2 = euclidsRandomNumbersArray2.pop(euclidsPositionOfMaxIter)
+ euclidsMaxGCDInCommDivArray = euclidsCommonDivisorArray.pop(euclidsPositionOfMaxIter)
+
+ euclidsMinNumberInRandArr1 = euclidsRandomNumbersArray1.pop(euclidsPositionOfMinIter)
+ euclidsMinNumberInRandArr2 = euclidsRandomNumbersArray2.pop(euclidsPositionOfMinIter)
+ euclidsMinGCDInCommDivArray = euclidsCommonDivisorArray.pop(euclidsPositionOfMinIter)
+
+ print ("Max iterations Rand Number 1: ", euclidsMaxNumberInRandArr1)
+ print ("Max iterations Rand Number 2: ", euclidsMaxNumberInRandArr2)
+ print ("Max iterations GCD: ", euclidsMaxGCDInCommDivArray)
+
+ print ("Min iterations Rand Number 1: ", euclidsMinNumberInRandArr1)
+ print ("Min iterations Rand Number 2: ", euclidsMinNumberInRandArr2)
+ print ("Min iterations GCD: ", euclidsMinGCDInCommDivArray)
+
+
+
+
+
+
+
+
+
+ #   ******* PROOF ********
+
+ # CICA's Algorithm Results:
+
+ print ("\n>>>> \n (1) CICA'S ALGORITHM:")
+
+ print ("\n\nThe most number of iterations used is", maxIterations, ": for GCD of (",maxNumberInRandArr1,",",
+        maxNumberInRandArr2,"), which is = ",maxGCDInCommDivArray,".")
+ print ("The least number of iterations used is", minIterations, ": for GCD of (",minNumberInRandArr1,",",
+        minNumberInRandArr2,"), which is =",minGCDInCommDivArray,".")
+ #print ("Total number of iterations :  ", iterationSum)
+ print ("The average number of iterations used for all 100 pairs is ", iterationSum/100, "iterations.")
+
+ # Euclid's Algorithm Results:
+
+ print ("\n>>>> \n (2) EUCLID'S ALGORITHM:")
+
+ euclidsMaxIterations = max(euclidsCounterArray,key=int)
+ print ("The most number of iterations used is", euclidsMaxIterations, ": for GCD of (",euclidsMaxNumberInRandArr1,",",
+        euclidsMaxNumberInRandArr2,"), which is =",euclidsMaxGCDInCommDivArray,".")
+
+ euclidsMinIterations = min(euclidsCounterArray,key=int)
+ print ("The least number of iterations used is", euclidsMinIterations, ": for GCD of (",euclidsMinNumberInRandArr1,",",
+        euclidsMinNumberInRandArr2,"), which is =",euclidsMinGCDInCommDivArray,".")
+
+ euclidsIterationSum = sum(euclidsCounterArray)
+ print ("Total number of iterations : ", euclidsIterationSum)
+
+ print ("The average number of iterations used for all 100 pairs is ",  int (euclidsIterationSum/100), "iterations.")
+
+
+#***********
+
+                #**********
+
+                                #*************
 if __name__ == '__main__':
         main()
 
