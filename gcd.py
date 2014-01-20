@@ -17,13 +17,9 @@ def main():
  randomNumbersArray2 = []       #keeps track of other random number in pair
  commonDivisorArray = []        #keeps track of pair's GCD
 
- maxIterations = 0              #largest int in iterationsArray
- minIterations = 0              #smallest int in iterationsArray
- iterationSum = 0               #sums all ints in iterationsArray
-
  #euclids algorithm variables:
- euclidsrandomNumbersArray1 = []    #copies randomNumbersArray1 to Euclid's Algorithm
- euclidsrandomNumbersArray2 = []    #copies randomNumbersArray2 to Euclid's Algorithm
+ passingEuclidsRandomNumbersArray1 = []    #copies randomNumbersArray1 to Euclid's Algorithm
+ passingEuclidsRandomNumbersArray2 = []    #copies randomNumbersArray2 to Euclid's Algorithm
 
  print ("Program start...")
 
@@ -40,7 +36,6 @@ def main():
 
     #variable declaration
     potentialDivisor = 0
-    #instanceCounter = 101          #counts down from 100 to 1
     iterationCounter = 0            #keeps track of iteration per int pair in question
     gotchaFlag = False              #boolean flag, checks and sets True if common divisor found
 
@@ -93,14 +88,13 @@ def main():
 
     rNA1Length = len(randomNumbersArray1)
     rNA2Length = len(randomNumbersArray2)
-    #commonDivisorArray.append(potentialDivisor)
 
  maxIterations = max(iterationsArray,key=int)            #gets largest iteration value
  minIterations = min(iterationsArray,key=int)            #gets smallest iteration value
  iterationSum = sum(iterationsArray)                     #gets sum of iteration values
 
- euclidsrandomNumbersArray1 = randomNumbersArray1        #copies arrays of random ints for Euclid's Alg
- euclidsrandomNumbersArray2 = randomNumbersArray2
+ passingEuclidsRandomNumbersArray1 = randomNumbersArray1        #copies arrays of random ints for Euclid's Alg
+ passingEuclidsRandomNumbersArray2 = randomNumbersArray2
 
  positionOfMaxIter = iterationsArray.index(max(iterationsArray,key=int))     #gets position in array of max rand
  positionOfMinIter = iterationsArray.index(min(iterationsArray,key=int))    #gets position in array of min rand
@@ -142,14 +136,15 @@ def main():
  euclidsCommonDivisorArray = []         #keeps track of pair's GCD
  euclidsRandomNumbersArray1 = []
  euclidsRandomNumbersArray2 = []
+ euclidsRange = 0
 
- euclidsRNA1Length = len(euclidsrandomNumbersArray1)    #useful for cross check & in while loop below
- euclidsRNA2Length = len(euclidsrandomNumbersArray2)
+ euclidsRNA1Length = len(passingEuclidsRandomNumbersArray1)    #useful for cross check & in while loop below
+ euclidsRNA2Length = len(passingEuclidsRandomNumbersArray2)
 
  if euclidsRNA1Length == euclidsRNA2Length:             #little check if both array lengths are equal
      euclidsRange = euclidsRNA2Length
 
- while len(euclidsrandomNumbersArray1) != 0:
+ while euclidsRange != 0 and randomNumbersArray1 != [] and randomNumbersArray2 != []:
      euclidsCounter = 0                                 #re-initializes instance counter for each loop
      #compare coprimes, make larger a and smaller b
      euclidsCandidate1 = randomNumbersArray1.pop(0)     #gets matching pair from array from CICA
