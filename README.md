@@ -34,7 +34,12 @@ before the GCD is found for each pair.
       The program uses the pairs generated in (1) above, which were stored in 2 arrays, randomNumberArray1 and 
       randomNumberArray2, and first compares each number to find the smaller of the pair. It subtracts the smaller
       subtrahend from the larger minuend, and this is considered one iteration, or one operation on the ints. 
-      
+
+
+
+
+
+      N/B: The Python version is 3.3 - 64 bit.
       
       
 
