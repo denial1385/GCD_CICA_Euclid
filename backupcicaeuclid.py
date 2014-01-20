@@ -27,7 +27,6 @@ def main():
 
  print ("Program start...")
 
-
  for x in range (0,100):                #how to repeat operation for 100 pairs of ints
     #print ("\nInstance Number: ", x)
 
@@ -63,6 +62,8 @@ def main():
 
     #print ("Modulo of 1st number: ", mod1)
     #print ("Modulo of 2nd number: ", mod2)
+
+
 
     if mod1 == 0 and mod2 == 0:             #if both mods are 0, no need to step into algorithm
         gotchaFlag = True                   #bool flag, True if previous calculation resulted in GCD

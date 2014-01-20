@@ -1,5 +1,6 @@
 
                     #__author__ = 'n91bu1n15'
+        # David Ngibuini        Class: CSC 335 Computer Algorithms Homework 1
 
                     # Greatest Common Divisor using
                 #Consecutive Integer Checking Algorithm
