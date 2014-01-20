@@ -1,11 +1,11 @@
 
-##__author__ = 'n91bu1n15'
-#To get the greatest common divisor, 1 way is to use the consecutive integer check (CIC) method.
-#This method divides both 2 random numbers, m and n by an integer,
-# and sees if the remainder is 0 for both of them.
-#If it is, it returns that integer as the answer.
-#If it's not, it decrements the integer by 1, & tries again.
-#Since the GCD can't be larger than the smallest of the two divisors (m and n).                                                                                                                                                                                                                                           'this algorithm starts the division process using the smallest divisor, and counting down from there.
+                    #__author__ = 'n91bu1n15'
+
+                    # Greatest Common Divisor using
+                #Consecutive Integer Checking Algorithm
+                    #as well as Euclid's Algorithm.
+                    #
+# For more detailed high-level analysis, please refer to attached "Readme.md" file.                                                                                                                                                                                                                                        'this algorithm starts the division process using the smallest divisor, and counting down from there.
 
 import random
 
@@ -26,6 +26,15 @@ def main():
  euclidsrandomNumbersArray2 = []    #copies randomNumbersArray2 to Euclid's Algorithm
 
  print ("Program start...")
+
+    # (1) Consecutive Integer Checking Algorithm:
+
+#To get the greatest common divisor, 1 way is to use the consecutive integer check (CIC) method.
+#This method divides both 2 random numbers, m and n by an integer,
+# and sees if the remainder is 0 for both of them.
+#If it is, it returns that integer as the answer.
+#If it's not, it decrements the integer by 1, & tries again.
+#The GCD can't be larger than the smallest of the two divisors (m and n).
 
  for x in range (0,100):                #how to repeat operation for 100 pairs of ints
 
@@ -118,8 +127,11 @@ def main():
  print ("The average number of iterations used for all 100 pairs is ", iterationSum/100, "iterations.")
 
  #*************************************************
- #              EUCLID'S ALGORITHM
+
+
+ #  (2) EUCLID'S ALGORITHM
  # Subtract a smaller co-prime from a larger co-prime, and repeat the process until the difference is 0.
+
  #*************************************************
 
  temp = 0                               #temporary variable from subtraction operations
@@ -205,10 +217,4 @@ def main():
 if __name__ == '__main__':
         main()
 
-
-
-
-
-
-
-
+                                    #End.
