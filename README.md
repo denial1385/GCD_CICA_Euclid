@@ -1,3 +1,4 @@
+#ngibuini88706
 GCD_CICA_Euclid
 ===============
 
@@ -35,11 +36,10 @@ before the GCD is found for each pair.
       randomNumberArray2, and first compares each number to find the smaller of the pair. It subtracts the smaller
       subtrahend from the larger minuend, and this is considered one iteration, or one operation on the ints. 
 
+      Once the result is less than the current subtrahend, this is the new subtrahend. The current subtrahend
+      becomes the new minuend. This process is repeated until the result is 0. The GCD is the last known subtrahend
 
-
-
-
-      N/B: The Python version is 3.3 - 64 bit.
+  N/B: The Python version is 3.3 - 64 bit.
       
       
 
